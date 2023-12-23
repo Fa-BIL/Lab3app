@@ -48,5 +48,18 @@ class Window(QMainWindow):
         with open(next(self.bad_iterator), "r", encoding="utf-8") as file:
             self.bad_review.setText(" ".join(file.readlines()))
             self.bad_review.adjustSize()
+            
+def application():
+    app = QApplication(sys.argv)
 
+    window = Window()
+    
+    window.show()
+
+    sys.exit(app.exec_())
+    
+
+
+if __name__ == "__main__":
+    application()
 
