@@ -109,5 +109,25 @@ class Window(QtWidgets.QWidget):
         except AttributeError:
             self.error_window("You should choose directory first!", "Error")
 
+    def get_next_good(self) -> None:
+        try:
+            with open(next(self.good_iterator), "r", encoding="utf-8") as file:
+                self.review_label.setText(" ".join(file.readlines()))
+        except AttributeError:
+            self.error_window("You should choose directory first!", "Error")
+        except IndexError:
+            self.review_label.setText("Комментарии закончились")
+            self.good_iterator =  Iterator(self.dataset_path, "good")
+
+    def get_next_bad(self) -> None:
+        try:
+            with open(next(self.bad_iterator), "r", encoding="utf-8") as file:
+                self.review_label.setText(" ".join(file.readlines()))
+        except AttributeError:
+            self.error_window("You should choose directory first!", "Error")
+        except IndexError:
+            self.review_label.setText("Комментарии закончились")
+            self.bad_iterator =  Iterator(self.dataset_path, "bad")
+
 
     
