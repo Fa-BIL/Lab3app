@@ -139,5 +139,28 @@ class Window(QtWidgets.QWidget):
         except AttributeError:
             self.error_window("You should choose directory first!", "Error")
 
+    def error_window(self, text: str, title: str) -> None:
+        dialog = QtWidgets.QDialog()
+
+        label = QtWidgets.QLabel(dialog)
+        label.setText(text)
+        label.adjustSize()
+
+        btn = QtWidgets.QPushButton(dialog)
+        btn.setText("Ok")
+        btn.adjustSize()
+        btn.move(50, 50)
+        btn.clicked.connect(lambda: dialog.hide())
+        btn.setStyleSheet("background:rgb(255,218,185);  border: 5px solid rgb(255,218,185)")
+
+        lay = QtWidgets.QVBoxLayout()
+        lay.addWidget(label)
+        lay.addWidget(btn)
+        dialog.setLayout(lay)
+
+        dialog.setFixedSize(400, 200)
+        dialog.setWindowTitle(title)
+        dialog.setStyleSheet("background:rgb(255,239,213); color: rgb(48, 48, 48); font-weight:bold; border-radius: 5px;")
+        dialog.exec_()
 
     
