@@ -129,5 +129,15 @@ class Window(QtWidgets.QWidget):
             self.review_label.setText("Комментарии закончились")
             self.bad_iterator =  Iterator(self.dataset_path, "bad")
 
+    def copy_dataset(self) -> None:
+        try:
+            self.copy_dir = os.path.abspath(QtWidgets.QFileDialog.getExistingDirectory(self, "Select dataset copy folder"))
+            if goal_2.copy_create_annotaion(self.dataset_path, self.copy_dir, "ann2.csv") == True:
+                self.ann_success_label.setText("Success")
+            else:
+                self.ann_success_label.setText("Error")
+        except AttributeError:
+            self.error_window("You should choose directory first!", "Error")
+
 
     
