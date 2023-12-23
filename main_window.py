@@ -172,3 +172,15 @@ class Window(QtWidgets.QWidget):
                 self.ann_success_label.setText("Error")
         except AttributeError:
             self.error_window("You should choose directory first!", "Error")    
+
+def application() -> None:
+    app = QtWidgets.QApplication(sys.argv)
+
+    window = Window()
+
+    window.show()
+
+    sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    application()
