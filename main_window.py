@@ -91,5 +91,14 @@ class Window(QtWidgets.QWidget):
         self.setWindowTitle("3rd lab")
         self.setGeometry(0, 0, 1900, 950)
 
+    def choose_dir(self) -> None:
+        self.dataset_path = os.path.abspath(
+            QtWidgets.QFileDialog.getExistingDirectory(self, "Select dataset folder")
+        )
+        self.dir_label.setText(f"Chose directory: {self.dataset_path}")
+        self.dir_label.adjustSize()
+        self.good_iterator = Iterator(self.dataset_path, "good")
+        self.bad_iterator = Iterator(self.dataset_path, "bad")
+
 
     
