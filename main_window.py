@@ -163,4 +163,12 @@ class Window(QtWidgets.QWidget):
         dialog.setStyleSheet("background:rgb(255,239,213); color: rgb(48, 48, 48); font-weight:bold; border-radius: 5px;")
         dialog.exec_()
 
-    
+    def create_rand_dataset(self) -> None:
+        try:
+            self.copy_rand_dir = os.path.abspath(QtWidgets.QFileDialog.getExistingDirectory(self, "Select dataset random copy folder"))
+            if goal_3.create_annotaion(self.dataset_path, self.copy_rand_dir, "ann3.csv") == True:
+                self.ann_success_label.setText("Success")
+            else:
+                self.ann_success_label.setText("Error")
+        except AttributeError:
+            self.error_window("You should choose directory first!", "Error")    
