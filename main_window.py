@@ -21,3 +21,11 @@ class ScrollLabel(QtWidgets.QScrollArea):
 
     def setText(self, text: str) -> None:
         self.label.setText(text)
+
+class Window(QtWidgets.QWidget):
+    def __init__(self) -> None:
+        super(QtWidgets.QWidget, self).__init__()
+        self.initUI()
+        self.setStyleSheet(
+            "background:rgb(255,239,213); color: rgb(48, 48, 48); font-weight:bold; border-radius: 5px;")
+ 
