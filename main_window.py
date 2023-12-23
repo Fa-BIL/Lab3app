@@ -100,5 +100,14 @@ class Window(QtWidgets.QWidget):
         self.good_iterator = Iterator(self.dataset_path, "good")
         self.bad_iterator = Iterator(self.dataset_path, "bad")
 
+    def create_annotation(self) -> None:
+        try:
+            if goal_1.create_annotaion("ann1.csv", self.dataset_path) == True:
+                self.ann_success_label.setText("Success")
+            else:
+                self.ann_success_label.setText("Error")
+        except AttributeError:
+            self.error_window("You should choose directory first!", "Error")
+
 
     
