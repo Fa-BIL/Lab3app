@@ -166,7 +166,7 @@ class Window(QtWidgets.QWidget):
     def create_rand_dataset(self) -> None:
         try:
             self.copy_rand_dir = os.path.abspath(QtWidgets.QFileDialog.getExistingDirectory(self, "Select dataset random copy folder"))
-            if goal_3.create_annotaion(self.dataset_path, self.copy_rand_dir, "ann3.csv") == True:
+            if goal_3.random_create_annotaion(self.dataset_path, self.copy_rand_dir, "ann3.csv") == True:
                 self.ann_success_label.setText("Success")
             else:
                 self.ann_success_label.setText("Error")
