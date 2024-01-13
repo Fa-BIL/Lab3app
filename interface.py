@@ -36,8 +36,8 @@ class Window(QMainWindow):
         self.bad_button.adjustSize()
         self.bad_button.clicked.connect(self.get_next_bad)
 
-        self.good_iterator = Iterator(os.path.join("c:\\", "Users", "MSI", "Documents", "Programming", "Lab1webscraping", "dataset"), "good")
-        self.bad_iterator = Iterator(os.path.join("c:\\", "Users", "MSI", "Documents", "Programming", "Lab1webscraping", "dataset"), "bad")
+        self.good_iterator = Iterator(os.path.join("c:\\", "Users", "MSI", "Documents", "Programming", "py_lab_1", "dataset"), "good")
+        self.bad_iterator = Iterator(os.path.join("c:\\", "Users", "MSI", "Documents", "Programming", "py_lab_1", "dataset"), "bad")
         
     def get_next_good(self):
         with open(next(self.good_iterator), "r", encoding="utf-8") as file:
